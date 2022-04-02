@@ -51,8 +51,12 @@ public class Program
             {
                 var Posts = context.Posts.Where(x => x.BlogID == Blog.BlogId);
                 if (Posts.Count() == 0) Console.WriteLine("There were no post found on this blog");
-                else foreach (var Post in Posts) Console.WriteLine($"PostID: {Post.PostID} | Title: {Post.Title} | " +
+                else 
+                {
+                    Console.WriteLine($"There were {Posts.Count()} post(s) found on this blog");
+                    foreach (var Post in Posts) Console.WriteLine($"PostID: {Post.PostID} | Title: {Post.Title} | " +
                     $"Content: {Post.Content}");
+                } 
             }
             else Console.WriteLine("Since the post could not be found heading back to main menu");
         }
